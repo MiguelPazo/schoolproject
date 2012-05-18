@@ -1,0 +1,36 @@
+body{
+    background: white;
+    font-family: Helvetica,Arial;
+    font-size: 16px;
+}
+h1{
+    text-align: center;
+    text-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    behavior: url(ie-css3.htc);
+}
+h2{
+    color: #ccccff;
+    text-align: center ;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    behavior: url(ie-css3.htc);
+}
+.box{
+    background-color: #ddd;
+    width: 110px;
+    height: 25px;
+    padding: 20px;
+    position: absolute;
+    top: 1px; left: 1px;
+    text-align: center;
+    font-weight: bold;
+
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+
+    -moz-box-shadow: 10px 10px 20px #000;
+    -webkit-box-shadow: 10px 10px 10px #000;
+    box-shadow: 10px 10px 20px #000;
+
+    behavior: url(ie-css3.htc);
+}
