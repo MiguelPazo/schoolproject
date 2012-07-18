@@ -1,4 +1,4 @@
-<?php echo $this->doctype(); ?>
+<!DOCTYPE HTML>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="es"> <![endif]-->
@@ -6,11 +6,27 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
-        
-        <?php echo $this->headTitle(); ?>
-        <?php echo $this->headMeta(); ?>
-        <?php echo $this->headLink(); ?>       
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>School Project</title>
+
+        <meta name="viewport" content="width=device-width">
+
+        <link type="text/css" media="screen" rel="stylesheet" href="/styles/libs/boilerplate.css" > 
+        <link type="text/css" media="screen" rel="stylesheet" href="/styles/libs/dock.css" > 
+
+        <link type="text/css" media="screen" rel="stylesheet" href="/styles/main.css" >
+
+        <script type="text/javascript" src="/js/libs/jquery-1.7.1.js"></script>
+        <script type="text/javascript" src="/js/libs/modernizr-2.5.2.min.js"></script>
+        <script type="text/javascript" src="/js/libs/dock.js"></script>
+
+        <script type="text/javascript" src="/js/main.js"></script>
+        <!--[if lt IE 7]>
+        <style type="text/css">
+            .dock img { behavior: url(iepngfix.htc) }
+        </style>
+        <![endif]-->
     </head>
     <body>
         <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -20,12 +36,30 @@
 
         </header>
         <div role="main">
+            <div class="dashboardBorder">
+                <div class="dashboardBody">
+                    
+                </div>
+            </div>
             <?php echo $this->layout()->content ?>
         </div>
         <footer>
-
+            <div class="dock" id="dock2">
+                <div class="dock-container2">
+                    <a class="dock-item2" href="#"><span>Home</span><img src="images/home.png" alt="home" /></a> 
+                    <a class="dock-item2" href="#"><span>Contact</span><img src="images/email.png" alt="contact" /></a> 
+                    <a class="dock-item2" href="#"><span>Portfolio</span><img src="images/portfolio.png" alt="portfolio" /></a> 
+                    <a class="dock-item2" href="#"><span>Music</span><img src="images/music.png" alt="music" /></a> 
+                    <a class="dock-item2" href="#"><span>Video</span><img src="images/video.png" alt="video" /></a> 
+                    <a class="dock-item2" href="#"><span>History</span><img src="images/history.png" alt="history" /></a> 
+                    <a class="dock-item2" href="#"><span>Calendar</span><img src="images/calendar.png" alt="calendar" /></a> 
+                    <a class="dock-item2" href="#"><span>Links</span><img src="images/link.png" alt="links" /></a> 
+                    <a class="dock-item2" href="#"><span>RSS</span><img src="images/rss.png" alt="rss" /></a> 
+                    <a class="dock-item2" href="#"><span>RSS2</span><img src="images/rss2.png" alt="rss" /></a> 
+                </div>
+            </div>
         </footer>
-        
-        <?php echo $this->headScript(); ?>
+        <script type="text/javascript" src="/js/libs/plugins.js"></script>
+        <script type="text/javascript" src="/js/googleAnalytics.js"></script>
     </body>
 </html>
