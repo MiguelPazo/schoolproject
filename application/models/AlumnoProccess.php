@@ -12,7 +12,7 @@ class Application_Model_AlumnoProccess extends Application_Model_Alumno
         return $this->_dbTable;
     }
 
-    public function listar($cod_alumno,Application_Model_AlumnoTable $oalumno)
+    public function getOne($cod_alumno,Application_Model_AlumnoTable $oalumno)
     {
         $resultado=  $this->getDbTable()->find($cod_alumno);
         if(0==count($resultado)){
@@ -26,7 +26,7 @@ class Application_Model_AlumnoProccess extends Application_Model_Alumno
                 ->setEstado($fila->estado);        
     }
 
-    public function listarTodo(){
+    public function getAll(){
         $resultado=$this->getDbTable()->fetchAll();
         $oalumnos=array();
         foreach ($resultado as $fila) {
