@@ -40,20 +40,4 @@ class Application_Model_AlumnoProccess extends Application_Model_Alumno
         }
         return $oalumnos;
     }
-    
-    public function guardar(Application_Model_AlumnoTable $oalumno){
-        $data=array(
-            'Datos_Personales_cod_personal'=>$oalumno->getDatos_Personales_cod_personal(),
-            'Usuario_cod_usuario'=>$oalumno->getUsuario_cod_usuario(),
-            'correo'=>$oalumno->getCorreo(),
-            'estado'=>$oalumno->getEstado(),
-        );
-        
-        if(null===($cod_alumno=$oalumno->cod_alumno)){
-            unset($data['cod_alumno']);
-            $this->getDbTable()->insert($data);
-        }else{
-            $this->getDbTable()->update($data,array('cod_alumno=?'=>$cod_alumno));
-        }
-    }
 }
