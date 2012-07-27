@@ -1,24 +1,16 @@
 <?php
 
-class Application_Model_AlumnoTable extends Zend_Db_Table_Abstract
+class Application_Model_Alumno extends Zend_Db_Table_Abstract
 {
     protected $_name = 'Alumno';
     
-    protected $_cod_alumno;
-    protected $_Datos_Personales_cod_personal;
-    protected $_Usuario_cod_usuario;
+    protected $_codAlumno;
+    protected $_datosPersonalesCodPersonal;
+    protected $_usuarioCodUsuario;
     protected $_correo;
     protected $_estado;
     
-    public function __construct() {
-        $this->_cod_alumno=0;
-        $this->_Datos_Personales_cod_personal=0;
-        $this->_Usuario_cod_usuario=0;
-        $this->_correo="";
-        $this->_estado="";
-    }
-    
-    public function setDatos_Personales_cod_personal($cod_personal)
+    public function setDatosPersonalesCodPersonal($cod_personal)
     {
         $this->_Datos_Personales_cod_personal=(int) $cod_personal;
         return $this;
@@ -72,5 +64,4 @@ class Application_Model_AlumnoTable extends Zend_Db_Table_Abstract
     {
         return $this->_cod_alumno;
     }
-
 }
