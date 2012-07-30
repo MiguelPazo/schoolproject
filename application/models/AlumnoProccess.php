@@ -7,7 +7,7 @@ class Application_Model_AlumnoProccess extends Application_Model_Alumno
     public function getDbTable()
     {
         if(null===$this->_dbTable){
-            $this->_dbTable='Application_Model_AlumnoTable';
+            $this->_dbTable='Application_Model_Alumno';
         }
         return $this->_dbTable;
     }
@@ -19,10 +19,10 @@ class Application_Model_AlumnoProccess extends Application_Model_Alumno
             return;
         }
         $fila=$resultado->current();
-        $oalumno=new Application_Model_AlumnoTable();
-        $oalumno->setCod_alumno($fila->cod_alumno)
-                ->setDatos_Personales_cod_personal($fila->Datos_Personales_cod_personal)
-                ->setUsuario_cod_usuario($fila->Usuario_cod_usuario)
+        $oalumno=new Application_Model_Alumno();
+        $oalumno->setCodAlumno($fila->cod_alumno)
+                ->setDatosPersonalesCodPersonal($fila->Datos_Personales_cod_personal)
+                ->setUsuarioCodUsuario($fila->Usuario_cod_usuario)
                 ->setCorreo($fila->correo)
                 ->setEstado($fila->estado);
         return $oalumno;
@@ -32,10 +32,10 @@ class Application_Model_AlumnoProccess extends Application_Model_Alumno
         $resultado=$this->getDbTable()->fetchAll();
         $oalumnos=array();
         foreach ($resultado as $fila) {
-            $nalumno=new Application_Model_AlumnoTable();
-            $nalumno->setCod_alumno($fila->cod_alumno)
-                    ->setDatos_Personales_cod_personal($fila->Datos_Personales_cod_personal)
-                    ->setUsuario_cod_usuario($fila->Usuario_cod_usuario)
+            $nalumno=new Application_Model_Alumno();
+            $nalumno->setCodAlumno($fila->cod_alumno)
+                    ->setDatosPersonalesCodPersonal($fila->Datos_Personales_cod_personal)
+                    ->setUsuarioCodUsuario($fila->Usuario_cod_usuario)
                     ->setCorreo($fila->correo)
                     ->setEstado($fila->estado);
             $oalumnos[]=$nalumno;
