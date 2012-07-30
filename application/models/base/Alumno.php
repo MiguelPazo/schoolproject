@@ -10,26 +10,26 @@ class Application_Model_Alumno extends Zend_Db_Table_Abstract
     protected $_correo;
     protected $_estado;
     
-    public function setDatosPersonalesCodPersonal($cod_personal)
+    public function setDatosPersonalesCodPersonal($codPersonal)
     {
-        $this->_Datos_Personales_cod_personal=(int) $cod_personal;
+        $this->_datosPersonalesCodPersonal=(int) $codPersonal;
         return $this;
     }
     
-    public function getDatos_Personales_cod_personal()
+    public function getDatosPersonalesCodPersonal()
     {
-        return $this->_Datos_Personales_cod_personal;
+        return $this->_datosPersonalesCodPersonal;
     }
     
-    public function setUsuario_cod_usuario($cod_usuario)
+    public function setUsuarioCodUsuario($codUsuario)
     {
-        $this->_Usuario_cod_usuario=(int) $cod_usuario;
+        $this->_usuarioCodUsuario=(int) $codUsuario;
         return $this;        
     }
     
     public function getUsuario_cod_usuario()
     {
-        return $this->_Usuario_cod_usuario;
+        return $this->_usuarioCodUsuario;
     }
     
     public function setCorreo($correo)
@@ -54,38 +54,44 @@ class Application_Model_Alumno extends Zend_Db_Table_Abstract
         return $this->_estado;
     }
     
-    public function setCod_alumno($cod_alumno)
+    public function setCodAlumno($codAlumno)
     {
-        $this->_cod_alumno=(int)$cod_alumno;
+        $this->_codAlumno=(int)$codAlumno;
         return $this;
     }
     
-    public function getCod_alumno()
+    public function getCodAlumno()
     {
-        return $this->_cod_alumno;
+        return $this->_codAlumno;
     }
     
     public function saveObject(){
         $data=array(
-            'Datos_Personales_cod_personal'=>$oalumno->getDatos_Personales_cod_personal(),
-            'Usuario_cod_usuario'=>$oalumno->getUsuario_cod_usuario(),
-            'correo'=>$oalumno->getCorreo(),
-            'estado'=>$oalumno->getEstado(),
+            'cod_alumno'=>$this->getCodAlumno(),
+            'Datos_Personales_cod_personal'=>  $this->getDatosPersonalesCodPersonal(),
+            'Usuario_cod_usuario'=>  $this->getUsuario_cod_usuario(),
+            'correo'=>$this->getCorreo(),
+            'estado'=>$this->getEstado(),
         );
-        
-        if(null===($cod_alumno=$oalumno->cod_alumno)){
-            unset($data['cod_alumno']);
-            $this->getDbTable()->insert($data);
-        }else{
-            $this->getDbTable()->update($data,array('cod_alumno=?'=>$cod_alumno));
-        }
+        $this->getDbTable()->insert($data);
     }
     
     public function updateObject(){
-        
+        $data=array(
+            'Datos_Personales_cod_personal'=>  $this->getDatosPersonalesCodPersonal(),
+            'Usuario_cod_usuario'=>  $this->getUsuario_cod_usuario(),
+            'correo'=>$this->getCorreo(),
+            'estado'=>$this->getEstado(),
+        );
+        $cod_alumno=$this->getCodAlumno();
+        $this->getDbTable()->update($data,array('cod_alumno=?'=>$cod_alumno));
     }
     
     public function deleteObject(){
-        
+        $data=array(
+            'estado'=>'0',
+        );
+        $cod_alumno=$this->getCodAlumno();
+        $this->getDbTable()->update($data,array('cod_alumno=?'=>$cod_alumno));
     }
 }

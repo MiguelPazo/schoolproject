@@ -12,18 +12,20 @@ class Application_Model_AlumnoProccess extends Application_Model_Alumno
         return $this->_dbTable;
     }
 
-    public function getOne($cod_alumno,Application_Model_AlumnoTable $oalumno)
+    public function getOne($cod_alumno)
     {
         $resultado=  $this->getDbTable()->find($cod_alumno);
         if(0==count($resultado)){
             return;
         }
         $fila=$resultado->current();
+        $oalumno=new Application_Model_AlumnoTable();
         $oalumno->setCod_alumno($fila->cod_alumno)
                 ->setDatos_Personales_cod_personal($fila->Datos_Personales_cod_personal)
                 ->setUsuario_cod_usuario($fila->Usuario_cod_usuario)
                 ->setCorreo($fila->correo)
-                ->setEstado($fila->estado);        
+                ->setEstado($fila->estado);
+        return $oalumno;
     }
 
     public function getAll(){
