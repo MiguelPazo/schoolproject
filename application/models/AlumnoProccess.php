@@ -2,19 +2,10 @@
 
 class Application_Model_AlumnoProccess extends Application_Model_Alumno
 {
-    protected $_dbTable;
-    
-    public function getDbTable()
-    {
-        if(null===$this->_dbTable){
-            $this->_dbTable='Application_Model_Alumno';
-        }
-        return $this->_dbTable;
-    }
-
     public function getOne($cod_alumno)
     {
-        $resultado=  $this->getDbTable()->find($cod_alumno);
+        $resultado=  $this->fetchRow();
+        getDbTable()->find($cod_alumno);
         if(0==count($resultado)){
             return;
         }

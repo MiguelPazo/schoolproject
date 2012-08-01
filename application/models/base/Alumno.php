@@ -1,97 +1,79 @@
 <?php
 
-class Application_Model_Alumno extends Zend_Db_Table_Abstract
+class Application_Model_Alumno
+        extends Zend_Db_Table_Abstract
 {
+
     protected $_name = 'Alumno';
-    
     protected $_codAlumno;
     protected $_datosPersonalesCodPersonal;
     protected $_usuarioCodUsuario;
     protected $_correo;
     protected $_estado;
-    
-    public function setDatosPersonalesCodPersonal($codPersonal)
-    {
-        $this->_datosPersonalesCodPersonal=(int) $codPersonal;
-        return $this;
+
+    public function setDatosPersonalesCodPersonal($codPersonal) {
+        $this->_datosPersonalesCodPersonal = (int) $codPersonal;
     }
-    
-    public function getDatosPersonalesCodPersonal()
-    {
+
+    public function getDatosPersonalesCodPersonal() {
         return $this->_datosPersonalesCodPersonal;
     }
-    
-    public function setUsuarioCodUsuario($codUsuario)
-    {
-        $this->_usuarioCodUsuario=(int) $codUsuario;
-        return $this;        
+
+    public function setUsuarioCodUsuario($codUsuario) {
+        $this->_usuarioCodUsuario = (int) $codUsuario;
     }
-    
-    public function getUsuario_cod_usuario()
-    {
+
+    public function getUsuario_cod_usuario() {
         return $this->_usuarioCodUsuario;
     }
-    
-    public function setCorreo($correo)
-    {
-        $this->_correo=(string)$correo;
-        return $this;
+
+    public function setCorreo($correo) {
+        $this->_correo = (string) $correo;
     }
-    
-    public function getCorreo()
-    {
+
+    public function getCorreo() {
         return $this->_correo;
     }
-    
-    public function setEstado($estado)
-    {
-        $this->_estado=(string)$estado;
-        return $this;
+
+    public function setEstado($estado) {
+        $this->_estado = (string) $estado;
     }
-    
-    public function getEstado()
-    {
+
+    public function getEstado() {
         return $this->_estado;
     }
-    
-    public function setCodAlumno($codAlumno)
-    {
-        $this->_codAlumno=(int)$codAlumno;
-        return $this;
-    }
-    
-    public function getCodAlumno()
-    {
+
+    public function getCodAlumno() {
         return $this->_codAlumno;
     }
-    
-    public function saveObject(){
-        $data=array(
-            'cod_alumno'=>$this->getCodAlumno(),
-            'Datos_Personales_cod_personal'=>  $this->getDatosPersonalesCodPersonal(),
-            'Usuario_cod_usuario'=>  $this->getUsuario_cod_usuario(),
-            'correo'=>$this->getCorreo(),
-            'estado'=>$this->getEstado(),
+
+    public function saveObject() {
+        $data = array(
+            'Datos_Personales_cod_personal' => $this->getDatosPersonalesCodPersonal(),
+            'Usuario_cod_usuario' => $this->getUsuario_cod_usuario(),
+            'correo' => $this->getCorreo(),
+            'estado' => $this->getEstado(),
         );
-        $this->getDbTable()->insert($data);
+        $this->insert($data);
     }
-    
-    public function updateObject(){
-        $data=array(
-            'Datos_Personales_cod_personal'=>  $this->getDatosPersonalesCodPersonal(),
-            'Usuario_cod_usuario'=>  $this->getUsuario_cod_usuario(),
-            'correo'=>$this->getCorreo(),
-            'estado'=>$this->getEstado(),
+
+    public function updateObject() {
+        $data = array(
+            'Datos_Personales_cod_personal' => $this->getDatosPersonalesCodPersonal(),
+            'Usuario_cod_usuario' => $this->getUsuario_cod_usuario(),
+            'correo' => $this->getCorreo(),
+            'estado' => $this->getEstado(),
         );
-        $cod_alumno=$this->getCodAlumno();
-        $this->getDbTable()->update($data,array('cod_alumno=?'=>$cod_alumno));
+        $cod_alumno = $this->getCodAlumno();
+        $this->update($data, array('cod_alumno=?' => $cod_alumno));
     }
-    
-    public function deleteObject(){
-        $data=array(
-            'estado'=>'0',
+
+    public function deleteObject() {
+        $data = array(
+            'estado' => '0',
         );
-        $cod_alumno=$this->getCodAlumno();
-        $this->getDbTable()->update($data,array('cod_alumno=?'=>$cod_alumno));
+        $cod_alumno = $this->getCodAlumno();
+        $this->update($data, array('cod_alumno=?' => $cod_alumno));
     }
+
 }

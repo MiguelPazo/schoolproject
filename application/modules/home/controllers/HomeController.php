@@ -10,7 +10,13 @@ class Home_HomeController extends App_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        $alumno = new Application_Model_Alumno();
+        $alumno->setDatosPersonalesCodPersonal(1);
+        $alumno->setUsuarioCodUsuario(1);
+        $alumno->setCorreo("hola");
+        $alumno->setEstado(1);
+        $alumno->saveObject();
+//        exit;
     }
 
 
