@@ -38,7 +38,10 @@
         <div role="main">
             <div class="dashboardBorder">
                 <div class="dashboardBody">
-                    
+                    <div id="header-navigation" style="float: right">
+                    <a href="<?php echo $this->url(array('controller'=>'prueba'),
+                        'default',true) ?>">Prueba</a>
+                    </div>
                 </div>
             </div>
             <?php echo $this->layout()->content ?>
