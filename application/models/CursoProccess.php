@@ -1,6 +1,6 @@
 <?php
 
-class Models_Curso extends Application_Model_Curso
+class Application_Model_CursoProccess extends Application_Model_Curso
 {
     public function update() {
         
