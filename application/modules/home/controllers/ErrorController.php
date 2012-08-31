@@ -1,6 +1,6 @@
 <?php
 
-class ErrorController extends App_Controller_Action_ModuleHome
+class Home_ErrorController extends App_Controller_Action
 {
 
     public function errorAction()
