@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_Alumno extends Zend_Db_Table_Abstract
+class Application_Model_base_Alumno extends Zend_Db_Table_Abstract
 {
     protected $_name = 'Alumno';
     
@@ -27,7 +27,7 @@ class Application_Model_Alumno extends Zend_Db_Table_Abstract
         return $this;        
     }
     
-    public function getUsuario_cod_usuario()
+    public function getUsuarioCodUsuario()
     {
         return $this->_usuarioCodUsuario;
     }

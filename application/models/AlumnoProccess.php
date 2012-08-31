@@ -1,13 +1,25 @@
 <?php
 
-class Application_Model_AlumnoProccess extends Application_Model_Alumno
+class Application_Model_AlumnoProccess extends Application_Model_base_Alumno
 {
     protected $_dbTable;
+    
+    public function setDbTable($dbTable)
+    {
+        if(is_string($dbTable)){
+            $dbTable=new $dbTable();
+        }
+        if(!$dbTable instanceof Zend_Db_Table_Abstract){
+            throw new Exception('Invalid table data gateway provided');
+        }
+        $this->_dbTable=$dbTable;
+        return $this;
+    }
     
     public function getDbTable()
     {
         if(null===$this->_dbTable){
-            $this->_dbTable='Application_Model_Alumno';
+            $this->setDbTable('Application_Model_base_Alumno');
         }
         return $this->_dbTable;
     }
@@ -19,7 +31,7 @@ class Application_Model_AlumnoProccess extends Application_Model_Alumno
             return;
         }
         $fila=$resultado->current();
-        $oalumno=new Application_Model_Alumno();
+        $oalumno=new Application_Model_base_Alumno();
         $oalumno->setCodAlumno($fila->cod_alumno)
                 ->setDatosPersonalesCodPersonal($fila->Datos_Personales_cod_personal)
                 ->setUsuarioCodUsuario($fila->Usuario_cod_usuario)
@@ -32,7 +44,7 @@ class Application_Model_AlumnoProccess extends Application_Model_Alumno
         $resultado=$this->getDbTable()->fetchAll();
         $oalumnos=array();
         foreach ($resultado as $fila) {
-            $nalumno=new Application_Model_Alumno();
+            $nalumno=new Application_Model_base_Alumno();
             $nalumno->setCodAlumno($fila->cod_alumno)
                     ->setDatosPersonalesCodPersonal($fila->Datos_Personales_cod_personal)
                     ->setUsuarioCodUsuario($fila->Usuario_cod_usuario)
