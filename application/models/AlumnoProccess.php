@@ -2,57 +2,41 @@
 
 class Application_Model_AlumnoProccess extends Application_Model_Base_Alumno
 {
-    protected $_dbTable;
-    
-    public function setDbTable($dbTable)
-    {
-        if(is_string($dbTable)){
-            $dbTable=new $dbTable();
-        }
-        if(!$dbTable instanceof Zend_Db_Table_Abstract){
-            throw new Exception('Invalid table data gateway provided');
-        }
-        $this->_dbTable=$dbTable;
-        return $this;
-    }
-    
-    public function getDbTable()
-    {
-        if(null===$this->_dbTable){
-            $this->setDbTable('Application_Model_Base_Alumno');
-        }
-        return $this->_dbTable;
+
+    public function getOne($codAlumno) {
+        $db = $this->getAdapter();
+        $where = $db->quoteInto('cod_alumno = ?', $codAlumno);
+
+        $result = $this->fetchRow($where);
+
+        if (count($result) == 0)
+            return NULL;
+
+        $oAlumno = new Application_Model_Base_Alumno();
+        $oAlumno->setCodAlumno($result->cod_alumno);
+        $oAlumno->setDatosPersonalesCodPersonal($result->Datos_Personales_cod_personal);
+        $oAlumno->setUsuarioCodUsuario($result->Usuario_cod_usuario);
+        $oAlumno->setCorreo($result->correo);
+        $oAlumno->setEstado($result->estado);
+
+        return $oAlumno;
     }
 
-    public function getOne($cod_alumno)
-    {
-        $resultado=  $this->fetchRow();
-        getDbTable()->find($cod_alumno);
-        if(0==count($resultado)){
-            return;
+    public function getAll() {
+        $result = $this->fetchAll();
+        $oAlumnos = array();
+
+        foreach ($result as $fila) {
+            $nAlumno = new Application_Model_Base_Alumno();
+            $nAlumno->setCodAlumno($fila->cod_alumno);
+            $nAlumno->setDatosPersonalesCodPersonal($fila->Datos_Personales_cod_personal);
+            $nAlumno->setUsuarioCodUsuario($fila->Usuario_cod_usuario);
+            $nAlumno->setCorreo($fila->correo);
+            $nAlumno->setEstado($fila->estado);
+            $oAlumnos[] = $nAlumno;
         }
-        $fila=$resultado->current();
-        $oalumno=new Application_Model_Base_Alumno();
-        $oalumno->setCodAlumno($fila->cod_alumno)
-                ->setDatosPersonalesCodPersonal($fila->Datos_Personales_cod_personal)
-                ->setUsuarioCodUsuario($fila->Usuario_cod_usuario)
-                ->setCorreo($fila->correo)
-                ->setEstado($fila->estado);
-        return $oalumno;
+
+        return $oAlumnos;
     }
 
-    public function getAll(){
-        $resultado=$this->getDbTable()->fetchAll();
-        $oalumnos=array();
-        foreach ($resultado as $fila) {
-            $nalumno=new Application_Model_Base_Alumno();
-            $nalumno->setCodAlumno($fila->cod_alumno)
-                    ->setDatosPersonalesCodPersonal($fila->Datos_Personales_cod_personal)
-                    ->setUsuarioCodUsuario($fila->Usuario_cod_usuario)
-                    ->setCorreo($fila->correo)
-                    ->setEstado($fila->estado);
-            $oalumnos[]=$nalumno;
-        }
-        return $oalumnos;
-    }
 }

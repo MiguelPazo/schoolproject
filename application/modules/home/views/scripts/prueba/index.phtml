@@ -1,32 +1,24 @@
 <br /><br />
 <div class="dashboardBody">
-        
-        Alumnos: <br />
-        <p><a href="<?php echo $this->url(
-        array(
-            'controller'=>'prueba',
-            'action'=>'sign'
-        ),
-        'default',
-        true) ?>">Sign Our Guestbook</a></p>
-        <?php $entry2=$this->entries2;?>
-        <b>GetAll</b>
-        <dl>
-            <?php foreach($this->entries as $entry): ?>
-            <dt><b>id de Alumno:</b> <?php echo $this->escape($entry->getCodAlumno()) ?></dt>
-            <dd><b>Estado:</b> <?php echo $this->escape($entry->getEstado()) ?></dd>
-            <dd><b>Correo:</b> <?php echo $this->escape($entry->getCorreo()) ?></dd>
-            <dd><b>id de Usuario:</b> <?php echo $this->escape($entry->getUsuarioCodUsuario()) ?></dd>
-            <dd><b>id de Datos Personales:</b> <?php echo $this->escape($entry->getDatosPersonalesCodPersonal()) ?></dd>
-            <?php     endforeach; ?>
-        </dl>
-        
-        <b>GetOne</b>
-        <dl>
-            <dt><b>id de Alumno:</b> <?php echo $this->escape($entry2->getCodAlumno()) ?></dt>
-            <dd><b>Estado:</b> <?php echo $this->escape($entry2->getEstado()) ?></dd>
-            <dd><b>Correo:</b> <?php echo $this->escape($entry2->getCorreo()) ?></dd>
-            <dd><b>id de Usuario:</b> <?php echo $this->escape($entry2->getUsuarioCodUsuario()) ?></dd>
-            <dd><b>id de Datos Personales:</b> <?php echo $this->escape($entry2->getDatosPersonalesCodPersonal()) ?></dd>
-        </dl>
+    Alumnos: <br />
+    
+    <b>GetAll</b>
+    <dl>
+        <?php foreach ($this->entries as $entry): ?>
+            <dt><b>id de Alumno:</b> <?php echo $entry->getCodAlumno() ?></dt>
+            <dd><b>Estado:</b> <?php echo $entry->getEstado() ?></dd>
+            <dd><b>Correo:</b> <?php echo $entry->getCorreo() ?></dd>
+            <dd><b>id de Usuario:</b> <?php echo $entry->getUsuarioCodUsuario() ?></dd>
+            <dd><b>id de Datos Personales:</b> <?php echo $entry->getDatosPersonalesCodPersonal() ?></dd>
+        <?php endforeach; ?>
+    </dl>
+    
+    <b>GetOne</b>
+    <dl>
+        <dt><b>id de Alumno:</b> <?php echo $this->entries2->getCodAlumno() ?></dt>
+        <dd><b>Estado:</b> <?php echo $this->entries2->getEstado() ?></dd>
+        <dd><b>Correo:</b> <?php echo $this->entries2->getCorreo() ?></dd>
+        <dd><b>id de Usuario:</b> <?php echo $this->entries2->getUsuarioCodUsuario() ?></dd>
+        <dd><b>id de Datos Personales:</b> <?php echo $this->entries2->getDatosPersonalesCodPersonal() ?></dd>
+    </dl>
 </div>

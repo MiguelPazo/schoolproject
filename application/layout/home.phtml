@@ -15,7 +15,7 @@
         <link type="text/css" media="screen" rel="stylesheet" href="/styles/libs/boilerplate.css" > 
         <link type="text/css" media="screen" rel="stylesheet" href="/styles/libs/dock.css" > 
 
-        <link type="text/css" media="screen" rel="stylesheet" href="/styles/main.css" >
+        <!--<link type="text/css" media="screen" rel="stylesheet" href="/styles/main.css" >-->
 
         <script type="text/javascript" src="/js/libs/jquery-1.7.1.js"></script>
         <script type="text/javascript" src="/js/libs/modernizr-2.5.2.min.js"></script>
@@ -35,18 +35,19 @@
         <header>
 
         </header>
-        <div role="main">
+<!--        <div role="main">
             <div class="dashboardBorder">
                 <div class="dashboardBody">
                     <div id="header-navigation" style="float: right">
-                    <a href="<?php echo $this->url(array('controller'=>'prueba'),
-                        'default',true) ?>">Prueba</a>
+                    <a href="<?php // echo $this->url(array('controller'=>'prueba'),
+//                        'default',false) ?>">Prueba</a>
                     </div>
                 </div>
             </div>
-            <?php echo $this->layout()->content ?>
-        </div>
-        <footer>
+            
+        </div>-->
+        <?php echo $this->layout()->content ?>
+<!--        <footer>
             <div class="dock" id="dock2">
                 <div class="dock-container2">
                     <a class="dock-item2" href="#"><span>Home</span><img src="images/home.png" alt="home" /></a> 
@@ -61,7 +62,7 @@
                     <a class="dock-item2" href="#"><span>RSS2</span><img src="images/rss2.png" alt="rss" /></a> 
                 </div>
             </div>
-        </footer>
+        </footer>-->
         <script type="text/javascript" src="/js/libs/plugins.js"></script>
         <script type="text/javascript" src="/js/googleAnalytics.js"></script>
     </body>

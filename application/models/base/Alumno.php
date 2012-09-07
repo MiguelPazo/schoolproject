@@ -43,6 +43,9 @@ class Application_Model_Base_Alumno extends Zend_Db_Table_Abstract
         return $this->_estado;
     }
 
+    public function setCodAlumno($codAlumno) {
+        $this->_codAlumno = (string) $codAlumno;
+    }
     public function getCodAlumno() {
         return $this->_codAlumno;
     }
@@ -50,7 +53,7 @@ class Application_Model_Base_Alumno extends Zend_Db_Table_Abstract
     public function saveObject() {
         $data = array(
             'Datos_Personales_cod_personal' => $this->getDatosPersonalesCodPersonal(),
-            'Usuario_cod_usuario' => $this->getUsuario_cod_usuario(),
+            'Usuario_cod_usuario' => $this->getUsuarioCodUsuario(),
             'correo' => $this->getCorreo(),
             'estado' => $this->getEstado(),
         );
@@ -60,7 +63,7 @@ class Application_Model_Base_Alumno extends Zend_Db_Table_Abstract
     public function updateObject() {
         $data = array(
             'Datos_Personales_cod_personal' => $this->getDatosPersonalesCodPersonal(),
-            'Usuario_cod_usuario' => $this->getUsuario_cod_usuario(),
+            'Usuario_cod_usuario' => $this->getUsuarioCodUsuario(),
             'correo' => $this->getCorreo(),
             'estado' => $this->getEstado(),
         );
